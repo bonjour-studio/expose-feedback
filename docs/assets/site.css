@@ -1,21 +1,29 @@
 :root {
   color-scheme: light;
-  --bg: #f5f6f8;
+  --bg: #f6faff;
   --paper: #ffffff;
   --paper-soft: #fbfcfd;
-  --ink: #111318;
-  --ink-soft: #2f3641;
-  --muted: #69717d;
-  --quiet: #87909c;
-  --line: rgba(17, 19, 24, 0.1);
-  --line-strong: rgba(17, 19, 24, 0.16);
-  --blue: #1769ff;
-  --blue-dark: #064acb;
-  --green: #12a66a;
-  --amber: #d98a00;
-  --red: #e34b4b;
-  --navy: #101722;
-  --shadow: 0 24px 80px rgba(20, 30, 45, 0.14);
+  --ink: #081126;
+  --ink-soft: #203253;
+  --muted: #60708c;
+  --quiet: #8290a8;
+  --line: rgba(8, 17, 38, 0.1);
+  --line-strong: rgba(8, 17, 38, 0.18);
+  --blue: #0874ff;
+  --blue-cta: #0064ed;
+  --blue-dark: #004ebf;
+  --blue-soft: #eaf3ff;
+  --green: #1ab838;
+  --green-dark: #087f25;
+  --green-soft: #e9f9ee;
+  --amber: #f59500;
+  --amber-dark: #9d5c00;
+  --amber-soft: #fff4df;
+  --red: #ee2c3c;
+  --red-dark: #c91d2f;
+  --red-soft: #fff0f2;
+  --navy: #071d3f;
+  --shadow: 0 24px 80px rgba(8, 54, 126, 0.13);
   --radius: 8px;
 }
 
@@ -55,8 +63,8 @@ img {
   position: sticky;
   top: 0;
   z-index: 40;
-  border-bottom: 1px solid rgba(17, 19, 24, 0.08);
-  background: rgba(250, 251, 252, 0.82);
+  border-bottom: 1px solid rgba(8, 17, 38, 0.08);
+  background: rgba(247, 251, 255, 0.86);
   backdrop-filter: blur(24px) saturate(1.2);
 }
 
@@ -81,7 +89,7 @@ img {
 .brand img,
 .hero-product img {
   border-radius: 10px;
-  box-shadow: 0 10px 28px rgba(23, 105, 255, 0.2);
+  box-shadow: 0 10px 28px rgba(8, 116, 255, 0.24);
 }
 
 .nav-links {
@@ -98,7 +106,7 @@ img {
 }
 
 .nav-links a:hover {
-  color: var(--ink);
+  color: var(--blue-dark);
 }
 
 .nav-cta,
@@ -116,25 +124,35 @@ img {
 }
 
 .nav-cta {
-  background: var(--ink);
+  background: var(--blue-cta);
   color: #fff;
-  box-shadow: 0 14px 36px rgba(17, 19, 24, 0.16);
+  box-shadow: 0 14px 36px rgba(8, 116, 255, 0.24);
+}
+
+.nav-cta:hover,
+.button.primary:hover {
+  background: var(--blue-dark);
+}
+
+.button.secondary:hover {
+  border-color: rgba(8, 116, 255, 0.36);
+  background: var(--blue-soft);
 }
 
 .button.primary {
   min-height: 52px;
   padding: 0 24px;
-  background: var(--ink);
+  background: var(--blue-cta);
   color: #fff;
-  box-shadow: 0 18px 42px rgba(17, 19, 24, 0.18);
+  box-shadow: 0 18px 42px rgba(8, 116, 255, 0.24);
 }
 
 .button.secondary {
   min-height: 52px;
   padding: 0 22px;
-  border: 1px solid var(--line-strong);
-  background: rgba(255, 255, 255, 0.78);
-  color: var(--ink);
+  border: 1px solid rgba(8, 116, 255, 0.22);
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--blue-dark);
 }
 
 .hero {
@@ -156,7 +174,7 @@ img {
   align-items: center;
   gap: 13px;
   margin-bottom: 24px;
-  color: var(--ink-soft);
+  color: var(--blue-dark);
   font-size: 0.98rem;
   font-weight: 760;
 }
@@ -206,7 +224,7 @@ h1 {
 
 .proof-strip div {
   padding: 16px 18px;
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.84);
 }
 
 .proof-strip span,
@@ -247,7 +265,7 @@ h1 {
   width: min(100%, 560px);
   overflow: hidden;
   border-radius: 18px;
-  background: #101722;
+  background: var(--navy);
   color: #e7edf7;
 }
 
@@ -278,7 +296,7 @@ h1 {
 
 .browser-top code {
   overflow: hidden;
-  color: #8fa6c8;
+  color: #9bc6ff;
   font-family: "SFMono-Regular", ui-monospace, Menlo, monospace;
   font-size: 0.78rem;
   text-overflow: ellipsis;
@@ -299,9 +317,9 @@ h1 {
   right: 86px;
   bottom: 0;
   width: 348px;
-  border: 9px solid #121922;
+  border: 9px solid #081126;
   border-radius: 40px;
-  background: #121922;
+  background: #081126;
 }
 
 .phone-frame::before {
@@ -320,7 +338,7 @@ h1 {
   min-height: 554px;
   padding: 18px;
   border-radius: 27px;
-  background: #f6f8fb;
+  background: #f2f7ff;
 }
 
 .screen-head,
@@ -351,8 +369,8 @@ h1 {
 .screen-head strong {
   padding: 7px 10px;
   border-radius: 999px;
-  background: rgba(18, 166, 106, 0.13);
-  color: #087d4c;
+  background: var(--green-soft);
+  color: var(--green-dark);
   font-size: 0.76rem;
 }
 
@@ -383,7 +401,7 @@ pre {
 
 .url-card code {
   overflow: hidden;
-  color: var(--blue-dark);
+  color: var(--blue);
   font-size: 0.89rem;
   font-weight: 760;
   text-overflow: ellipsis;
@@ -423,7 +441,7 @@ pre {
 }
 
 .log-card strong {
-  color: #087d4c;
+  color: var(--green-dark);
   font-family: "SFMono-Regular", ui-monospace, Menlo, monospace;
   font-size: 0.74rem;
 }
@@ -441,7 +459,7 @@ pre {
 
 .kicker {
   margin-bottom: 14px;
-  color: var(--blue-dark);
+  color: var(--blue);
   font-size: 0.78rem;
   font-weight: 820;
   letter-spacing: 0.06em;
@@ -480,7 +498,7 @@ h2 {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--blue-soft);
   color: var(--blue-dark);
   font-weight: 820;
 }
@@ -504,7 +522,7 @@ h2 {
 .muted-section {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .section-heading {
@@ -537,10 +555,31 @@ h2 {
   margin-bottom: 48px;
   padding: 0 9px;
   border-radius: 7px;
-  background: rgba(23, 105, 255, 0.09);
+  background: var(--blue-soft);
   color: var(--blue-dark);
   font-size: 0.76rem;
   font-weight: 840;
+}
+
+.feature-card:nth-child(2) span,
+.feature-card:nth-child(5) span {
+  background: var(--green-soft);
+  color: var(--green-dark);
+}
+
+.feature-card:nth-child(3) span {
+  background: var(--amber-soft);
+  color: var(--amber-dark);
+}
+
+.feature-card:nth-child(4) span {
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+
+.feature-card:nth-child(6) span {
+  background: var(--red-soft);
+  color: var(--red-dark);
 }
 
 .community-panel {
@@ -551,13 +590,13 @@ h2 {
   padding: 42px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #111722;
+  background: var(--navy);
   color: #fff;
   box-shadow: var(--shadow);
 }
 
 .community-panel .kicker {
-  color: #85aaff;
+  color: #9bc6ff;
 }
 
 .community-panel h2 {
@@ -567,7 +606,7 @@ h2 {
 
 .community-panel p {
   max-width: 680px;
-  color: #b6c0ce;
+  color: #b9c9df;
 }
 
 .community-actions {
@@ -579,7 +618,7 @@ h2 {
 
 .community-panel .button.primary {
   background: #fff;
-  color: var(--ink);
+  color: var(--blue-dark);
   box-shadow: none;
 }
 
@@ -724,7 +763,7 @@ h2 {
 }
 
 .legal-body th {
-  background: #f0f4fb;
+  background: var(--blue-soft);
 }
 
 .redirect-page {
