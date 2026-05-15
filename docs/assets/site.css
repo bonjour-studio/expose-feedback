@@ -129,6 +129,83 @@ img {
   box-shadow: 0 14px 36px rgba(8, 116, 255, 0.24);
 }
 
+.nav-menu {
+  position: relative;
+  display: none;
+  justify-self: end;
+}
+
+.nav-menu summary {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid rgba(8, 116, 255, 0.22);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--blue-dark);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 760;
+  list-style: none;
+  box-shadow: 0 12px 28px rgba(8, 54, 126, 0.1);
+}
+
+.nav-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-menu summary::after {
+  display: block;
+  width: 16px;
+  height: 12px;
+  background:
+    linear-gradient(currentColor, currentColor) 0 0 / 100% 2px no-repeat,
+    linear-gradient(currentColor, currentColor) 0 5px / 100% 2px no-repeat,
+    linear-gradient(currentColor, currentColor) 0 10px / 100% 2px no-repeat;
+  content: "";
+}
+
+.nav-menu-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 80;
+  display: grid;
+  width: min(260px, calc(100vw - 28px));
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.nav-menu-panel a {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 7px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 720;
+  text-decoration: none;
+}
+
+.nav-menu-panel a:hover {
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+
+.nav-menu-panel .nav-menu-cta {
+  justify-content: center;
+  margin-top: 4px;
+  background: var(--blue-cta);
+  color: #fff;
+}
+
 .nav-cta:hover,
 .button.primary:hover {
   background: var(--blue-dark);
@@ -852,17 +929,37 @@ h2 {
   }
 }
 
+@media (max-width: 640px) {
+  .nav {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-menu {
+    display: block;
+  }
+
+  .footer-copy span {
+    display: block;
+  }
+
+  .footer-copy span + span {
+    margin-top: 4px;
+  }
+}
+
 @media (max-width: 580px) {
   .shell {
     width: min(100% - 28px, 430px);
   }
 
   .nav {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-cta {
-    display: none;
+    grid-template-columns: auto auto;
   }
 
   .nav-links {
