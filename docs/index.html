@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expose Support</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f7fbff;
+        --fg: #142033;
+        --muted: #516070;
+        --card: #ffffff;
+        --line: #d8e6f2;
+        --blue: #1479ff;
+        --green: #12a66a;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1724;
+          --fg: #eef6ff;
+          --muted: #a8b6c7;
+          --card: #172132;
+          --line: #26364a;
+          --blue: #61a2ff;
+          --green: #49d693;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+      }
+
+      main {
+        width: min(880px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 56px 0;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 7vw, 4rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.65;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      a.card {
+        display: block;
+        min-height: 132px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--card);
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a.card:hover {
+        border-color: var(--blue);
+      }
+
+      .label {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--blue);
+        font-weight: 800;
+      }
+
+      .private .label {
+        color: var(--green);
+      }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      footer a {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Expose Support</h1>
+      <p>
+        Public questions, ideas, bug reports, beta feedback, and workflow sharing for Expose.
+        Use private email for billing, privacy, security, access tokens, private files, or private logs.
+      </p>
+
+      <section class="grid" aria-label="Support channels">
+        <a class="card" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/q-a">
+          <span class="label">Ask a question</span>
+          Public help for setup, routes, sources, local network access, and workflows.
+        </a>
+        <a class="card" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/ideas">
+          <span class="label">Suggest an idea</span>
+          Share feature requests and vote on product direction.
+        </a>
+        <a class="card" href="https://github.com/bonjour-studio/expose-feedback/issues/new/choose">
+          <span class="label">Report a bug</span>
+          Use structured issue forms for reproducible problems.
+        </a>
+        <a class="card private" href="mailto:support@bonjour.dev">
+          <span class="label">Private support</span>
+          Billing, privacy, security, private logs, tokens, and personal data.
+        </a>
+      </section>
+
+      <footer>
+        <a href="https://github.com/bonjour-studio/expose-feedback">Feedback repository</a>
+        <a href="https://expose.bonjour.dev/privacy">Privacy Policy</a>
+        <a href="https://expose.bonjour.dev/terms">Terms of Use</a>
+      </footer>
+    </main>
+  </body>
+</html>
