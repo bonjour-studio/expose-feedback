@@ -3,730 +3,246 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Expose - Community & Feedback</title>
+    <title>Expose - Local HTTP Server for iPhone and iPad</title>
     <meta
       name="description"
-      content="Expose support, community feedback, feature ideas, bug reports, and private support."
+      content="Expose turns your iPhone or iPad into a private local HTTP server for mock APIs, files, folders, photos, videos, QR sharing, and request logs."
     >
-    <style>
-      :root {
-        color-scheme: light dark;
-        --page: #f8fbff;
-        --surface: #ffffff;
-        --surface-strong: #eef7ff;
-        --ink: #142033;
-        --muted: #536578;
-        --line: #d8e6f2;
-        --blue: #1479ff;
-        --blue-dark: #0c56d9;
-        --green: #12a66a;
-        --amber: #f4a000;
-        --red: #f04c4c;
-        --shadow: 0 24px 70px rgba(20, 54, 92, 0.14);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --page: #0f1724;
-          --surface: #151f2f;
-          --surface-strong: #182a3f;
-          --ink: #eff7ff;
-          --muted: #a7b6c7;
-          --line: #2a3a4f;
-          --blue: #5aa0ff;
-          --blue-dark: #8abcff;
-          --green: #45d890;
-          --amber: #ffbf47;
-          --red: #ff706f;
-          --shadow: 0 26px 78px rgba(0, 0, 0, 0.34);
-        }
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: var(--page);
-        color: var(--ink);
-      }
-
-      a {
-        color: inherit;
-      }
-
-      .shell {
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-      }
-
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
-        background: color-mix(in srgb, var(--page) 88%, transparent);
-        backdrop-filter: blur(18px);
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 64px;
-        gap: 18px;
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 850;
-        text-decoration: none;
-      }
-
-      .brand-mark {
-        display: grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 8px;
-        background: var(--blue);
-        color: #fff;
-        font-size: 1.05rem;
-        font-weight: 900;
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-      }
-
-      .nav-links a {
-        color: var(--muted);
-        font-size: 0.95rem;
-        font-weight: 700;
-        text-decoration: none;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        padding: 0 18px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
-        color: var(--ink);
-        font-weight: 800;
-        text-decoration: none;
-      }
-
-      .button.primary {
-        border-color: var(--blue);
-        background: var(--blue);
-        color: #fff;
-      }
-
-      .hero {
-        display: grid;
-        grid-template-columns: minmax(0, 1.03fr) minmax(340px, 0.72fr);
-        align-items: center;
-        gap: 56px;
-        min-height: calc(100vh - 64px);
-        padding: 48px 0 72px;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 20px;
-        color: var(--green);
-        font-size: 0.86rem;
-        font-weight: 900;
-        text-transform: uppercase;
-      }
-
-      .status-dot {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: var(--green);
-      }
-
-      h1 {
-        margin: 0;
-        max-width: 720px;
-        font-size: 4.2rem;
-        line-height: 0.96;
-        letter-spacing: 0;
-      }
-
-      .lead {
-        max-width: 690px;
-        margin: 22px 0 0;
-        color: var(--muted);
-        font-size: 1.22rem;
-        line-height: 1.7;
-      }
-
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 32px;
-      }
-
-      .trust {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 26px 0 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .trust li {
-        display: inline-flex;
-        align-items: center;
-        min-height: 34px;
-        padding: 0 11px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        color: var(--muted);
-        background: color-mix(in srgb, var(--surface) 74%, transparent);
-        font-size: 0.9rem;
-        font-weight: 760;
-      }
-
-      .phone-wrap {
-        display: flex;
-        justify-content: center;
-      }
-
-      .phone {
-        width: min(100%, 360px);
-        border: 1px solid #111827;
-        border-radius: 38px;
-        padding: 12px;
-        background: #111827;
-        box-shadow: var(--shadow);
-      }
-
-      .screen {
-        min-height: 700px;
-        overflow: hidden;
-        border-radius: 28px;
-        background: #f9fcff;
-        color: #162033;
-      }
-
-      .screen-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 24px 22px 18px;
-      }
-
-      .screen-title {
-        font-size: 1.45rem;
-        font-weight: 900;
-      }
-
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        min-height: 30px;
-        padding: 0 10px;
-        border-radius: 999px;
-        background: rgba(18, 166, 106, 0.12);
-        color: #087d4c;
-        font-size: 0.78rem;
-        font-weight: 850;
-      }
-
-      .screen-body {
-        padding: 0 18px 24px;
-      }
-
-      .url-panel {
-        border: 1px solid #cfe6f7;
-        border-radius: 8px;
-        padding: 16px;
-        background: #ffffff;
-      }
-
-      .url-label {
-        display: block;
-        margin-bottom: 8px;
-        color: #607488;
-        font-size: 0.77rem;
-        font-weight: 820;
-        text-transform: uppercase;
-      }
-
-      .url {
-        display: block;
-        color: #0c56d9;
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-size: 0.95rem;
-        font-weight: 800;
-        overflow-wrap: anywhere;
-      }
-
-      .quick-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin: 14px 0;
-      }
-
-      .quick {
-        min-height: 92px;
-        border: 1px solid #dcebf5;
-        border-radius: 8px;
-        padding: 12px;
-        background: #ffffff;
-      }
-
-      .quick strong {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 0.9rem;
-      }
-
-      .quick span {
-        color: #66778a;
-        font-size: 0.8rem;
-        line-height: 1.4;
-      }
-
-      .activity {
-        margin-top: 10px;
-        border: 1px solid #dcebf5;
-        border-radius: 8px;
-        background: #ffffff;
-      }
-
-      .activity-row {
-        display: grid;
-        grid-template-columns: 54px 1fr 40px;
-        gap: 8px;
-        align-items: center;
-        min-height: 48px;
-        padding: 0 12px;
-        border-top: 1px solid #edf4fa;
-        font-size: 0.82rem;
-      }
-
-      .activity-row:first-child {
-        border-top: 0;
-      }
-
-      .method {
-        color: var(--blue-dark);
-        font-weight: 900;
-      }
-
-      .path {
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-weight: 780;
-      }
-
-      .ok {
-        color: #0b8b58;
-        font-weight: 900;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
-
-      .section h2 {
-        margin: 0 0 14px;
-        font-size: 2rem;
-        line-height: 1.12;
-        letter-spacing: 0;
-      }
-
-      .section-intro {
-        max-width: 700px;
-        margin-bottom: 26px;
-      }
-
-      .channel-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .channel {
-        display: flex;
-        flex-direction: column;
-        min-height: 228px;
-        padding: 22px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .channel:hover {
-        border-color: var(--blue);
-      }
-
-      .icon {
-        display: grid;
-        place-items: center;
-        width: 42px;
-        height: 42px;
-        margin-bottom: 18px;
-        border-radius: 8px;
-        color: #fff;
-        font-size: 1.25rem;
-        font-weight: 900;
-      }
-
-      .icon.blue {
-        background: var(--blue);
-      }
-
-      .icon.green {
-        background: var(--green);
-      }
-
-      .icon.amber {
-        background: var(--amber);
-      }
-
-      .icon.red {
-        background: var(--red);
-      }
-
-      .channel strong {
-        margin-bottom: 10px;
-        font-size: 1.05rem;
-      }
-
-      .channel span {
-        color: var(--muted);
-        font-size: 0.95rem;
-        line-height: 1.58;
-      }
-
-      .channel em {
-        margin-top: auto;
-        padding-top: 20px;
-        color: var(--blue-dark);
-        font-style: normal;
-        font-weight: 850;
-      }
-
-      .process {
-        display: grid;
-        grid-template-columns: 0.8fr 1fr;
-        gap: 34px;
-        align-items: start;
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        padding: 44px 0;
-      }
-
-      .steps {
-        display: grid;
-        gap: 12px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .steps li {
-        display: grid;
-        grid-template-columns: 34px 1fr;
-        gap: 12px;
-        align-items: start;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      .step-number {
-        display: grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 8px;
-        background: var(--surface-strong);
-        color: var(--blue-dark);
-        font-weight: 900;
-      }
-
-      .private-band {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 22px;
-        align-items: center;
-        padding: 32px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
-      }
-
-      footer {
-        padding: 34px 0 48px;
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-      }
-
-      .footer-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 16px;
-      }
-
-      .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .footer-links a {
-        color: var(--muted);
-        font-weight: 700;
-      }
-
-      @media (max-width: 920px) {
-        .hero,
-        .process,
-        .private-band {
-          grid-template-columns: 1fr;
-        }
-
-        .hero {
-          gap: 34px;
-          min-height: auto;
-        }
-
-        h1 {
-          font-size: 3.35rem;
-        }
-
-        .channel-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 620px) {
-        .nav {
-          align-items: flex-start;
-          flex-direction: column;
-          padding: 14px 0;
-        }
-
-        .nav-links {
-          width: 100%;
-          overflow-x: auto;
-          padding-bottom: 2px;
-        }
-
-        h1 {
-          font-size: 2.75rem;
-        }
-
-        .lead {
-          font-size: 1.05rem;
-        }
-
-        .actions .button {
-          width: 100%;
-        }
-
-        .screen {
-          min-height: 590px;
-        }
-
-        .channel-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .private-band {
-          padding: 22px;
-        }
-      }
-    </style>
+    <meta property="og:title" content="Expose - Local HTTP Server">
+    <meta
+      property="og:description"
+      content="Serve local routes from your iPhone or iPad without accounts, clouds, or public tunnels."
+    >
+    <meta property="og:image" content="/assets/app-icon.jpg">
+    <link rel="icon" href="/assets/app-icon.jpg">
+    <link rel="stylesheet" href="/assets/site.css">
   </head>
   <body>
     <header class="topbar">
-      <nav class="shell nav" aria-label="Main navigation">
-        <a class="brand" href="#top" aria-label="Expose home">
-          <span class="brand-mark">E</span>
+      <nav class="shell nav" aria-label="Primary navigation">
+        <a class="brand" href="/">
+          <img src="/assets/app-icon.jpg" alt="" width="36" height="36">
           <span>Expose</span>
         </a>
         <div class="nav-links">
-          <a href="#feedback">Feedback</a>
-          <a href="#triage">Triage</a>
-          <a href="https://github.com/bonjour-studio/expose-feedback">GitHub</a>
+          <a href="#features">Features</a>
+          <a href="/feedback/">Feedback</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a class="button primary" href="https://apps.apple.com/us/app/expose-http-server/id6764612017">App Store</a>
         </div>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="shell hero">
-        <div>
-          <div class="eyebrow"><span class="status-dot" aria-hidden="true">&nbsp;</span> Community &amp; Feedback</div>
-          <h1>Expose</h1>
-          <p class="lead">
-            Turn your iPhone or iPad into a local HTTP/API server, then help shape the next version with public questions, feature ideas, bug reports, and beta feedback.
-          </p>
-          <div class="actions">
-            <a class="button primary" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/q-a">Ask a question</a>
-            <a class="button" href="https://github.com/bonjour-studio/expose-feedback/issues/new/choose">Report a bug</a>
+    <main>
+      <section class="hero">
+        <div class="shell">
+          <div class="hero-copy">
+            <p class="eyebrow">Private local server for iOS</p>
+            <h1>Expose</h1>
+            <p class="lead">
+              Turn your iPhone or iPad into a focused local HTTP server for mock APIs,
+              read-only files, selected media, QR sharing, and request logs.
+            </p>
+            <div class="hero-actions" aria-label="Primary actions">
+              <a class="button primary" href="https://apps.apple.com/us/app/expose-http-server/id6764612017">Get on the App Store</a>
+              <a class="button" href="/feedback/">Open feedback</a>
+            </div>
+            <ul class="signal-row" aria-label="Product highlights">
+              <li>Local Wi-Fi only</li>
+              <li>Token protected</li>
+              <li>No account required</li>
+              <li>Built for developers</li>
+            </ul>
           </div>
-          <ul class="trust" aria-label="Product principles">
-            <li>Local network first</li>
-            <li>Token protected</li>
-            <li>Read-only sources</li>
-            <li>Developer friendly</li>
-          </ul>
         </div>
-
-        <div class="phone-wrap" aria-label="Expose app preview">
-          <div class="phone">
-            <div class="screen">
-              <div class="screen-header">
-                <div>
-                  <div class="screen-title">Server</div>
-                  <span class="pill"><span class="status-dot" aria-hidden="true">&nbsp;</span> Running</span>
-                </div>
-                <div class="brand-mark">E</div>
+        <div class="hero-media" aria-hidden="true">
+          <div class="product-shot app-shot">
+            <div class="mock-top">
+              <span>Expose</span>
+              <strong>Running</strong>
+            </div>
+            <div class="mock-panel url-panel">
+              <small>Local URL</small>
+              <code>http://192.168.1.42:8080</code>
+            </div>
+            <div class="mock-grid">
+              <div>
+                <small>Routes</small>
+                <strong>08</strong>
               </div>
-              <div class="screen-body">
-                <div class="url-panel">
-                  <span class="url-label">Network URL</span>
-                  <span class="url">http://192.168.1.23:8080/hello?token=••••</span>
+              <div>
+                <small>Sources</small>
+                <strong>05</strong>
+              </div>
+            </div>
+            <div class="mock-panel">
+              <small>Recent requests</small>
+              <div class="request-line"><span>GET /api/profile</span><strong>200</strong></div>
+              <div class="request-line"><span>GET /files/demo.zip</span><strong>206</strong></div>
+              <div class="request-line"><span>GET /photos/hero.jpg</span><strong>200</strong></div>
+            </div>
+            <div class="mock-actions">
+              <span>QR</span>
+              <span>Token</span>
+              <span>Logs</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section compact">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">What it does</p>
+              <h2>Serve real local workflows from the device in your hand.</h2>
+            </div>
+            <p class="section-note">
+              Expose is designed for quick testing, demos, QA passes, and nearby
+              automation where a private same-network endpoint is faster than a cloud setup.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="icon-box">API</div>
+              <h3>Mock JSON, HTML, and text routes</h3>
+              <p>Create hand-written endpoints for browser tests, prototypes, QA fixtures, and local integration work.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">DIR</div>
+              <h3>Share files and folders read-only</h3>
+              <p>Pick documents from iOS Files and expose them as local HTTP responses without uploading them elsewhere.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">LOG</div>
+              <h3>Watch requests as they happen</h3>
+              <p>Inspect methods, paths, status codes, durations, byte counts, and matched routes during a local session.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell workbench">
+          <div>
+            <p class="section-kicker">Local by design</p>
+            <h2>Useful when you need a server, not an account.</h2>
+            <div class="stack">
+              <div class="step">
+                <div class="step-index">1</div>
+                <div>
+                  <h3>Choose what to expose</h3>
+                  <p>Add a mock route, file, folder, or selected photo and keep every choice explicit.</p>
                 </div>
-                <div class="quick-grid">
-                  <div class="quick">
-                    <strong>JSON API</strong>
-                    <span>Mock responses for local development.</span>
-                  </div>
-                  <div class="quick">
-                    <strong>Files</strong>
-                    <span>Serve selected files and folders.</span>
-                  </div>
-                  <div class="quick">
-                    <strong>Photos</strong>
-                    <span>Expose chosen media on Wi-Fi.</span>
-                  </div>
-                  <div class="quick">
-                    <strong>Logs</strong>
-                    <span>Inspect requests as they arrive.</span>
-                  </div>
+              </div>
+              <div class="step">
+                <div class="step-index">2</div>
+                <div>
+                  <h3>Start a same-network session</h3>
+                  <p>Share the generated URL or QR code with nearby devices on the same Wi-Fi.</p>
                 </div>
-                <div class="activity" aria-label="Recent activity preview">
-                  <div class="activity-row">
-                    <span class="method">GET</span>
-                    <span class="path">/hello</span>
-                    <span class="ok">200</span>
-                  </div>
-                  <div class="activity-row">
-                    <span class="method">GET</span>
-                    <span class="path">/photos/cover</span>
-                    <span class="ok">206</span>
-                  </div>
-                  <div class="activity-row">
-                    <span class="method">HEAD</span>
-                    <span class="path">/files/demo.pdf</span>
-                    <span class="ok">200</span>
-                  </div>
+              </div>
+              <div class="step">
+                <div class="step-index">3</div>
+                <div>
+                  <h3>Stop when the job is done</h3>
+                  <p>Expose is built for foreground local sessions, not public hosting or background tunnels.</p>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="workbench-visual" aria-hidden="true">
+            <div class="terminal-art">
+              <div class="terminal-bar">
+                <div class="terminal-light"></div>
+                <div class="terminal-light"></div>
+                <div class="terminal-light"></div>
+              </div>
+              <div class="terminal-row">
+                <code>GET</code>
+                <span>/api/profile</span>
+                <strong>200</strong>
+              </div>
+              <div class="terminal-row">
+                <code>GET</code>
+                <span>/files/release-notes.pdf</span>
+                <strong>206</strong>
+              </div>
+              <div class="terminal-row">
+                <code>GET</code>
+                <span>/photos/selected/cover.jpg</span>
+                <strong>200</strong>
+              </div>
+              <div class="terminal-row">
+                <code>GET</code>
+                <span>/mock/checkout</span>
+                <strong>200</strong>
+              </div>
+              <div class="terminal-foot">
+                <span>Token required</span>
+                <span>Same-network access</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="shell section" id="feedback">
-        <h2>Choose the right feedback path.</h2>
-        <p class="section-intro">
-          Public posts help other Expose users find answers. Private email is still the right place for billing, security, access tokens, private files, and sensitive logs.
-        </p>
-        <div class="channel-grid">
-          <a class="channel" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/q-a">
-            <span class="icon blue">?</span>
-            <strong>Q&amp;A</strong>
-            <span>Setup questions, route behavior, local network access, and troubleshooting.</span>
-            <em>Open Q&amp;A</em>
-          </a>
-          <a class="channel" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/ideas">
-            <span class="icon green">+</span>
-            <strong>Ideas</strong>
-            <span>Vote on workflow gaps and suggest what Expose should support next.</span>
-            <em>Share an idea</em>
-          </a>
-          <a class="channel" href="https://github.com/bonjour-studio/expose-feedback/issues/new/choose">
-            <span class="icon amber">!</span>
-            <strong>Bug reports</strong>
-            <span>Use structured forms for reproducible crashes, regressions, and compatibility issues.</span>
-            <em>Report a bug</em>
-          </a>
-          <a class="channel" href="mailto:support@bonjour.dev">
-            <span class="icon red">@</span>
-            <strong>Private support</strong>
-            <span>Billing, privacy, security, access tokens, private files, or personal data.</span>
-            <em>Email support</em>
-          </a>
-        </div>
-      </section>
-
-      <section class="shell section" id="triage">
-        <div class="process">
-          <div>
-            <h2>Clear feedback, fast decisions.</h2>
-            <p>
-              Expose feedback is reviewed in a lightweight weekly loop, then converted into product decisions, private implementation work, or shipped release notes.
+      <section class="section feedback-band">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Community</p>
+              <h2>Tell us what should become sharper next.</h2>
+            </div>
+            <p class="section-note">
+              Public questions, ideas, bug reports, and compatibility notes live on GitHub
+              so roadmap decisions can stay visible.
             </p>
           </div>
-          <ol class="steps">
-            <li><span class="step-number">1</span><span>New reports are labeled by type: question, idea, beta feedback, bug, private support, or security.</span></li>
-            <li><span class="step-number">2</span><span>Reproducible bugs and accepted ideas are moved into the private product roadmap.</span></li>
-            <li><span class="step-number">3</span><span>When a fix ships in TestFlight or the App Store, the public thread is updated.</span></li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="shell section">
-        <div class="private-band">
-          <div>
-            <h2>Need a private route?</h2>
-            <p>
-              Email support when your report includes purchases, privacy requests, tokens, local URLs, personal screenshots, private files, or security details.
-            </p>
+          <div class="path-grid">
+            <a class="path-card" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/q-a">
+              <div>
+                <h3>Questions</h3>
+                <p>Ask setup, routing, device, and local network questions.</p>
+              </div>
+              <span>Open Q&amp;A</span>
+            </a>
+            <a class="path-card" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/ideas">
+              <div>
+                <h3>Ideas</h3>
+                <p>Vote on improvements and describe the workflow behind the request.</p>
+              </div>
+              <span>Share an idea</span>
+            </a>
+            <a class="path-card" href="https://github.com/bonjour-studio/expose-feedback/issues/new/choose">
+              <div>
+                <h3>Bug reports</h3>
+                <p>File reproducible issues with device, iOS version, and route details.</p>
+              </div>
+              <span>Report a bug</span>
+            </a>
+            <a class="path-card" href="mailto:support@bonjour.dev?subject=Expose%20Support">
+              <div>
+                <h3>Private support</h3>
+                <p>Use email for sensitive logs, billing details, or anything not suited for public GitHub.</p>
+              </div>
+              <span>Email support</span>
+            </a>
           </div>
-          <a class="button primary" href="mailto:support@bonjour.dev">support@bonjour.dev</a>
         </div>
       </section>
     </main>
 
-    <footer>
-      <div class="shell footer-row">
-        <span>© Bonjour, LLC</span>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>&copy; 2026 Bonjour, LLC. Expose is built for private local workflows.</p>
         <div class="footer-links">
-          <a href="https://github.com/bonjour-studio/expose-feedback">Feedback repository</a>
-          <a href="https://expose.bonjour.dev/privacy">Privacy Policy</a>
-          <a href="https://expose.bonjour.dev/terms">Terms of Use</a>
+          <a href="/feedback/">Feedback</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="https://github.com/bonjour-studio/expose-feedback">GitHub</a>
         </div>
       </div>
     </footer>

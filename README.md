@@ -1,6 +1,11 @@
-# Expose Community & Feedback
+# Expose Product Site & Feedback
 
-This is the official public feedback hub for Expose, the local-first HTTP/API server for iPhone and iPad.
+This repository hosts the public product site and feedback hub for Expose, the local-first HTTP/API server for iPhone and iPad.
+
+- Product site: [expose.bonjour.dev](https://expose.bonjour.dev)
+- Feedback entry: [expose.bonjour.dev/feedback](https://expose.bonjour.dev/feedback)
+- Privacy Policy: [expose.bonjour.dev/privacy](https://expose.bonjour.dev/privacy)
+- Terms of Use: [expose.bonjour.dev/terms](https://expose.bonjour.dev/terms)
 
 Use this repository for:
 
@@ -19,8 +24,6 @@ Please do not post private files, access tokens, local network URLs that include
 - Share a workflow: [Show and tell](https://github.com/bonjour-studio/expose-feedback/discussions/categories/show-and-tell)
 - Report a bug: [New issue](https://github.com/bonjour-studio/expose-feedback/issues/new/choose)
 - Private support: [support@bonjour.dev](mailto:support@bonjour.dev)
-- Privacy Policy: [expose.bonjour.dev/privacy](https://expose.bonjour.dev/privacy)
-- Terms of Use: [expose.bonjour.dev/terms](https://expose.bonjour.dev/terms)
 
 ## Good Feedback Includes
 
@@ -48,4 +51,3 @@ Please do not post private files, access tokens, local network URLs that include
 ## Languages
 
 You can post in English, Simplified Chinese, Traditional Chinese, or Japanese.
-
