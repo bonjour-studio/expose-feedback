@@ -21,215 +21,186 @@
     <header class="topbar">
       <nav class="shell nav" aria-label="Primary navigation">
         <a class="brand" href="/">
-          <img src="/assets/app-icon.jpg" alt="" width="36" height="36">
+          <img src="/assets/app-icon.jpg" alt="" width="38" height="38">
           <span>Expose</span>
         </a>
         <div class="nav-links">
+          <a href="#workflows">Workflows</a>
           <a href="#features">Features</a>
           <a href="/feedback/">Feedback</a>
           <a href="/privacy/">Privacy</a>
           <a href="/terms/">Terms</a>
-          <a class="button primary" href="https://apps.apple.com/us/app/expose-http-server/id6764612017">App Store</a>
         </div>
+        <a class="nav-cta" href="https://apps.apple.com/us/app/expose-http-server/id6764612017">App Store</a>
       </nav>
     </header>
 
     <main>
       <section class="hero">
-        <div class="shell">
+        <div class="shell hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Private local server for iOS</p>
-            <h1>Expose</h1>
+            <div class="hero-product">
+              <img src="/assets/app-icon.jpg" alt="" width="48" height="48">
+              <span>Expose for iPhone and iPad</span>
+            </div>
+            <h1>A local HTTP server, without the cloud.</h1>
             <p class="lead">
-              Turn your iPhone or iPad into a focused local HTTP server for mock APIs,
-              read-only files, selected media, QR sharing, and request logs.
+              Serve mock APIs, files, folders, selected media, and quick demos from
+              the device in your hand. Start a private same-network session, share
+              the URL or QR code, inspect requests, then stop.
             </p>
             <div class="hero-actions" aria-label="Primary actions">
-              <a class="button primary" href="https://apps.apple.com/us/app/expose-http-server/id6764612017">Get on the App Store</a>
-              <a class="button" href="/feedback/">Open feedback</a>
+              <a class="button primary" href="https://apps.apple.com/us/app/expose-http-server/id6764612017">
+                Download on the App Store
+              </a>
+              <a class="button secondary" href="/feedback/">Open feedback hub</a>
             </div>
-            <ul class="signal-row" aria-label="Product highlights">
-              <li>Local Wi-Fi only</li>
-              <li>Token protected</li>
-              <li>No account required</li>
-              <li>Built for developers</li>
-            </ul>
+            <div class="proof-strip" aria-label="Product properties">
+              <div>
+                <span>Scope</span>
+                <strong>Local Wi-Fi</strong>
+              </div>
+              <div>
+                <span>Access</span>
+                <strong>Token protected</strong>
+              </div>
+              <div>
+                <span>Account</span>
+                <strong>Not required</strong>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="hero-media" aria-hidden="true">
-          <div class="product-shot app-shot">
-            <div class="mock-top">
-              <span>Expose</span>
-              <strong>Running</strong>
-            </div>
-            <div class="mock-panel url-panel">
-              <small>Local URL</small>
-              <code>http://192.168.1.42:8080</code>
-            </div>
-            <div class="mock-grid">
-              <div>
-                <small>Routes</small>
-                <strong>08</strong>
+
+          <div class="hero-visual" aria-label="Expose local server workflow preview">
+            <div class="browser-card">
+              <div class="browser-top">
+                <div class="browser-light"></div>
+                <div class="browser-light"></div>
+                <div class="browser-light"></div>
+                <code>http://192.168.1.42:8080/api/profile</code>
               </div>
-              <div>
-                <small>Sources</small>
-                <strong>05</strong>
+              <pre>{
+  "name": "Local demo",
+  "source": "iPhone",
+  "status": "ready"
+}</pre>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="screen-head">
+                  <div>
+                    <span>Expose</span>
+                    <strong>Running</strong>
+                  </div>
+                  <img src="/assets/app-icon.jpg" alt="" width="36" height="36">
+                </div>
+                <div class="url-card">
+                  <span>Local URL</span>
+                  <code>http://192.168.1.42:8080</code>
+                </div>
+                <div class="mini-grid">
+                  <div><span>Routes</span><strong>08</strong></div>
+                  <div><span>Sources</span><strong>05</strong></div>
+                </div>
+                <div class="log-card">
+                  <span>Recent requests</span>
+                  <div><code>GET /api/profile</code><strong>200</strong></div>
+                  <div><code>GET /files/demo.zip</code><strong>206</strong></div>
+                  <div><code>GET /photos/cover.jpg</code><strong>200</strong></div>
+                </div>
               </div>
-            </div>
-            <div class="mock-panel">
-              <small>Recent requests</small>
-              <div class="request-line"><span>GET /api/profile</span><strong>200</strong></div>
-              <div class="request-line"><span>GET /files/demo.zip</span><strong>206</strong></div>
-              <div class="request-line"><span>GET /photos/hero.jpg</span><strong>200</strong></div>
-            </div>
-            <div class="mock-actions">
-              <span>QR</span>
-              <span>Token</span>
-              <span>Logs</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="features" class="section compact">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">What it does</p>
-              <h2>Serve real local workflows from the device in your hand.</h2>
-            </div>
-            <p class="section-note">
-              Expose is designed for quick testing, demos, QA passes, and nearby
-              automation where a private same-network endpoint is faster than a cloud setup.
-            </p>
+      <section id="workflows" class="section">
+        <div class="shell split">
+          <div class="section-intro">
+            <p class="kicker">Designed for short local sessions</p>
+            <h2>When a small private server is faster than a setup guide.</h2>
           </div>
+          <div class="workflow-list">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Prototype API responses</h3>
+                <p>Write JSON, HTML, or text routes for browser tests, QA fixtures, and quick product demos.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Share device files read-only</h3>
+                <p>Pick documents, folders, photos, or videos and make them available to nearby devices without uploads.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Watch what clients request</h3>
+                <p>Keep method, path, status, duration, bytes, and matched route visible while the session is live.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
+      <section id="features" class="section muted-section">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="kicker">Capabilities</p>
+            <h2>Focused server tools for iOS.</h2>
+          </div>
           <div class="feature-grid">
             <article class="feature-card">
-              <div class="icon-box">API</div>
-              <h3>Mock JSON, HTML, and text routes</h3>
-              <p>Create hand-written endpoints for browser tests, prototypes, QA fixtures, and local integration work.</p>
+              <span>JSON</span>
+              <h3>Mock APIs</h3>
+              <p>Create local endpoints with hand-written JSON, HTML, or plain text responses.</p>
             </article>
             <article class="feature-card">
-              <div class="icon-box">DIR</div>
-              <h3>Share files and folders read-only</h3>
-              <p>Pick documents from iOS Files and expose them as local HTTP responses without uploading them elsewhere.</p>
+              <span>FILES</span>
+              <h3>File and folder routes</h3>
+              <p>Expose selected items from Files with read-only behavior and MIME detection.</p>
             </article>
             <article class="feature-card">
-              <div class="icon-box">LOG</div>
-              <h3>Watch requests as they happen</h3>
-              <p>Inspect methods, paths, status codes, durations, byte counts, and matched routes during a local session.</p>
+              <span>MEDIA</span>
+              <h3>Selected photos and videos</h3>
+              <p>Serve only the assets you choose, useful for previews, demos, and device-to-device tests.</p>
+            </article>
+            <article class="feature-card">
+              <span>AUTH</span>
+              <h3>Bearer token access</h3>
+              <p>Gate local URLs with a session token when you need one more layer of intent.</p>
+            </article>
+            <article class="feature-card">
+              <span>LOGS</span>
+              <h3>Request inspection</h3>
+              <p>Follow status codes, Range requests, durations, byte counts, and route matching as they happen.</p>
+            </article>
+            <article class="feature-card">
+              <span>LOCAL</span>
+              <h3>No remote relay</h3>
+              <p>Expose is built for same-network workflows, not public tunnels or cloud-hosted data.</p>
             </article>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="shell workbench">
+        <div class="shell community-panel">
           <div>
-            <p class="section-kicker">Local by design</p>
-            <h2>Useful when you need a server, not an account.</h2>
-            <div class="stack">
-              <div class="step">
-                <div class="step-index">1</div>
-                <div>
-                  <h3>Choose what to expose</h3>
-                  <p>Add a mock route, file, folder, or selected photo and keep every choice explicit.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step-index">2</div>
-                <div>
-                  <h3>Start a same-network session</h3>
-                  <p>Share the generated URL or QR code with nearby devices on the same Wi-Fi.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step-index">3</div>
-                <div>
-                  <h3>Stop when the job is done</h3>
-                  <p>Expose is built for foreground local sessions, not public hosting or background tunnels.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="workbench-visual" aria-hidden="true">
-            <div class="terminal-art">
-              <div class="terminal-bar">
-                <div class="terminal-light"></div>
-                <div class="terminal-light"></div>
-                <div class="terminal-light"></div>
-              </div>
-              <div class="terminal-row">
-                <code>GET</code>
-                <span>/api/profile</span>
-                <strong>200</strong>
-              </div>
-              <div class="terminal-row">
-                <code>GET</code>
-                <span>/files/release-notes.pdf</span>
-                <strong>206</strong>
-              </div>
-              <div class="terminal-row">
-                <code>GET</code>
-                <span>/photos/selected/cover.jpg</span>
-                <strong>200</strong>
-              </div>
-              <div class="terminal-row">
-                <code>GET</code>
-                <span>/mock/checkout</span>
-                <strong>200</strong>
-              </div>
-              <div class="terminal-foot">
-                <span>Token required</span>
-                <span>Same-network access</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section feedback-band">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">Community</p>
-              <h2>Tell us what should become sharper next.</h2>
-            </div>
-            <p class="section-note">
-              Public questions, ideas, bug reports, and compatibility notes live on GitHub
-              so roadmap decisions can stay visible.
+            <p class="kicker">Community and support</p>
+            <h2>Help shape the next sharp edge.</h2>
+            <p>
+              Questions, feature ideas, bug reports, and compatibility notes are public
+              on GitHub. Sensitive logs, billing issues, and private data should go by email.
             </p>
           </div>
-          <div class="path-grid">
-            <a class="path-card" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/q-a">
-              <div>
-                <h3>Questions</h3>
-                <p>Ask setup, routing, device, and local network questions.</p>
-              </div>
-              <span>Open Q&amp;A</span>
-            </a>
-            <a class="path-card" href="https://github.com/bonjour-studio/expose-feedback/discussions/categories/ideas">
-              <div>
-                <h3>Ideas</h3>
-                <p>Vote on improvements and describe the workflow behind the request.</p>
-              </div>
-              <span>Share an idea</span>
-            </a>
-            <a class="path-card" href="https://github.com/bonjour-studio/expose-feedback/issues/new/choose">
-              <div>
-                <h3>Bug reports</h3>
-                <p>File reproducible issues with device, iOS version, and route details.</p>
-              </div>
-              <span>Report a bug</span>
-            </a>
-            <a class="path-card" href="mailto:support@bonjour.dev?subject=Expose%20Support">
-              <div>
-                <h3>Private support</h3>
-                <p>Use email for sensitive logs, billing details, or anything not suited for public GitHub.</p>
-              </div>
-              <span>Email support</span>
-            </a>
+          <div class="community-actions">
+            <a class="button primary" href="/feedback/">Open feedback hub</a>
+            <a class="button secondary" href="mailto:support@bonjour.dev?subject=Expose%20Support">Email support</a>
           </div>
         </div>
       </section>
