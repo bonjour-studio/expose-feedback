@@ -1,0 +1,98 @@
+name: Bug report
+description: Report a reproducible problem in Expose.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Expose.
+
+        Do not include access tokens, private files, private URLs, or personal data. Email support@bonjour.dev if the report needs private details.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed access tokens, private URLs, files, photos, videos, and personal data from this report.
+          required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: Expose version and build
+      placeholder: "0.0.2 (12)"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      placeholder: "iPhone 15 Pro, iPad Pro 11-inch, etc."
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: iOS or iPadOS version
+      placeholder: "iOS 18.5"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Server start or stop
+        - Local network access
+        - Routes
+        - Sources
+        - Files or folders
+        - Photos or videos
+        - Logs
+        - Security settings
+        - Purchases or membership
+        - Localization
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: "Describe the expected behavior."
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      placeholder: "Describe the actual behavior, including any visible error message."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Tap ...
+        3. Configure ...
+        4. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: route-source
+    attributes:
+      label: Minimal route or source setup
+      description: Share only non-sensitive examples. Replace tokens, hostnames, filenames, and personal data.
+      placeholder: |
+        Method: GET
+        Path: /hello
+        Source type: inline JSON / file / folder / photo / video
+        Notes:
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Screenshots or logs
+      description: Optional. Remove private data before uploading.
+

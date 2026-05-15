@@ -1,0 +1,15 @@
+title: "[General] "
+labels: ["needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use General for public topics that do not fit Q&A, Ideas, or Show and tell.
+  - type: textarea
+    id: topic
+    attributes:
+      label: Topic
+      placeholder: "What would you like to discuss?"
+    validations:
+      required: true
+

@@ -1,0 +1,14 @@
+title: "[Announcement] "
+labels: ["announcement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Maintainer announcement template.
+  - type: textarea
+    id: announcement
+    attributes:
+      label: Announcement
+      placeholder: "What changed?"
+    validations:
+      required: true

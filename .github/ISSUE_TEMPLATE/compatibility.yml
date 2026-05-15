@@ -1,0 +1,70 @@
+name: Compatibility or environment issue
+description: Report behavior that depends on device, iOS version, local network, router, or another client.
+title: "[Compatibility]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when Expose behaves differently across devices, iOS versions, routers, browsers, OSes, or client tools.
+
+        Do not include access tokens, private URLs, local IPs you consider sensitive, private files, or personal data.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed access tokens, private URLs, files, photos, videos, and personal data from this report.
+          required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: Expose version and build
+      placeholder: "0.0.2 (12)"
+    validations:
+      required: true
+  - type: input
+    id: ios-device
+    attributes:
+      label: Expose device and OS
+      placeholder: "iPhone 15 Pro, iOS 18.5"
+    validations:
+      required: true
+  - type: input
+    id: client-device
+    attributes:
+      label: Client device and app
+      placeholder: "MacBook Pro Safari 18, Windows Chrome, Android curl, Home Assistant, etc."
+    validations:
+      required: true
+  - type: dropdown
+    id: network
+    attributes:
+      label: Network type
+      options:
+        - Same Wi-Fi network
+        - iPhone or iPad hotspot
+        - School or office Wi-Fi
+        - Router with client isolation
+        - VPN involved
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Behavior
+      placeholder: "What works, what fails, and which device or client shows the problem?"
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Checks already tried
+      placeholder: |
+        - Local URL works on the Expose device: yes/no
+        - Network URL works from another device: yes/no
+        - Token enabled: yes/no
+        - CORS mode:
+        - Client IP allowlist mode:
+

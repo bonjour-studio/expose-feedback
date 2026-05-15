@@ -1,0 +1,36 @@
+title: "[Q&A] "
+labels: ["q-a", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask public questions here. For billing, privacy, security, or private logs, email support@bonjour.dev.
+  - type: input
+    id: version
+    attributes:
+      label: Expose version and build
+      placeholder: "0.0.2 (12), if relevant"
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options:
+        - Getting started
+        - Routes
+        - Sources
+        - Files or folders
+        - Photos or videos
+        - Local network access
+        - Security settings
+        - Purchases or membership
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      placeholder: "What are you trying to do?"
+    validations:
+      required: true
+

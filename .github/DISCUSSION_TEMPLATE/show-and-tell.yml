@@ -1,0 +1,24 @@
+title: "[Show and tell] "
+labels: ["show-and-tell"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share how you use Expose. Remove private URLs, tokens, files, and personal data before posting screenshots or examples.
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow
+      placeholder: "What did you build, test, share, or automate with Expose?"
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Setup
+      placeholder: "Routes, sources, clients, tools, devices, or network setup."
+  - type: textarea
+    id: lesson
+    attributes:
+      label: What worked well or could be better?
+

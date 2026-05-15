@@ -1,0 +1,43 @@
+title: "[Idea] "
+labels: ["idea", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share product ideas, workflow gaps, and roadmap input here. Please describe the use case before the solution.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      placeholder: "Describe the real workflow or pain point."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      placeholder: "What would make Expose better for this workflow?"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Developer mock API
+        - File or folder serving
+        - Photo or video serving
+        - Security
+        - Logs and diagnostics
+        - Import or export
+        - App UI
+        - Purchases or plans
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or workarounds
+      placeholder: "How do you handle this today?"
+
