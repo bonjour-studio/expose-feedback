@@ -7,6 +7,16 @@ This repository hosts the public product site and feedback hub for Expose, the l
 - Privacy Policy: [expose.bonjour.dev/privacy](https://expose.bonjour.dev/privacy)
 - Terms of Use: [expose.bonjour.dev/terms](https://expose.bonjour.dev/terms)
 
+## Preview the website
+
+The site is static and published from `docs/`. To preview it locally:
+
+```sh
+python3 -m http.server 4173 --bind 127.0.0.1 --directory docs
+```
+
+Open `http://127.0.0.1:4173/`. The homepage uses `docs/assets/home.css` and `home.js`; legal pages retain their existing shared stylesheet. Asset sources and licenses are listed in [`docs/assets/ATTRIBUTION.md`](docs/assets/ATTRIBUTION.md).
+
 Use this repository for:
 
 - Public product questions and workflow help.
