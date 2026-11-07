@@ -58,8 +58,18 @@ h1 span:last-child { color: var(--blue); }
 .explore-link { margin-top: 8px; }
 .icon { display: inline-block; flex-shrink: 0; background: currentColor; mask: var(--icon) center / contain no-repeat; -webkit-mask: var(--icon) center / contain no-repeat; }
 .caret { --icon: url('/assets/icons/caret-right.svg'); width: 18px; height: 18px; }
-.hero-visual { width: min(1220px, 100%); margin: 8px auto 0; }
-.hero-visual img { width: 100%; height: auto; }
+.hero-visual {
+  width: min(1220px, 100%);
+  margin: 8px auto 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.hero-visual img {
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 4.5%, #000 95%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 4.5%, #000 95%, transparent);
+}
 
 .features { position: relative; padding: 70px 12px 96px; }
 .anchor { position: absolute; top: 0; }
