@@ -1,6 +1,6 @@
 # Terms of Use
 
-**Last updated:** May 6, 2026
+**Last updated:** November 13, 2026
 **App:** Expose — Local HTTP/API Server
 **Developer:** Bonjour, LLC
 **Contact:** support@bonjour.dev
@@ -13,9 +13,12 @@ to these Terms. If you do not agree, do not install or use the App.
 
 Expose is a local HTTP/API server tool for iPhone and iPad. The App lets
 you expose hand-written JSON or HTML, files, folders, and selected
-photos or videos as HTTP responses on your local Wi-Fi network. The App
-runs **only while in the foreground or while iOS keeps the app process
-alive**; it is not designed as a 24/7 server platform.
+photos or videos as HTTP/HTTPS responses on your local network. Optional
+features include WebDAV, explicitly enabled uploads and write operations,
+local service discovery, and iCloud route sync. You control which sources
+and operations are exposed. The App runs **only while in the foreground
+or while iOS keeps the app process alive**; it is not designed as a 24/7
+server platform and does not provide public hosting or a relay.
 
 ## 2. Eligibility
 
@@ -27,9 +30,11 @@ from a parent or legal guardian to use the App.
 
 We grant you a personal, non-exclusive, non-transferable, revocable
 license to install and use the App on devices that you own or control
-and that are linked to your Apple ID, in accordance with the Apple
-Media Services Terms ("Apple Standard EULA") and these Terms. These
-Terms supplement, but do not replace, the Apple Standard EULA.
+and as permitted by Apple's applicable Usage Rules, in accordance with
+Apple's Licensed Application End User License Agreement ("Apple Standard
+EULA", https://www.apple.com/legal/internet-services/itunes/dev/stdeula/)
+and these Terms. These Terms supplement, but do not replace, the Apple
+Standard EULA or your non-waivable consumer rights.
 
 ## 4. Subscriptions, One-Time Purchases, and Trials
 
@@ -42,19 +47,22 @@ become available in the App.
 
 - The App offers a Free tier with a limited number of routes and data
   sources.
-- The App may offer a free trial period before charging. The trial
-  duration is shown at the time of purchase. **Cancellation must occur
-  at least 24 hours before the end of the trial** to avoid being
-  charged.
-- Paid plans may be offered as Monthly, Annual, or Lifetime
-  (one-time-purchase) options. Pricing and features are shown in the
-  App at the time of purchase.
+- Paid plans may be offered as Weekly, Monthly, Annual auto-renewing
+  subscriptions or a Lifetime non-consumable one-time purchase. These
+  plans unlock the same Pro entitlement; availability, local price,
+  billing period, and included features are shown before purchase.
+- Free trials or introductory offers apply only to eligible accounts and
+  products when shown in Apple's purchase sheet. The trial duration and
+  price after the trial are displayed before confirmation. No trial is
+  guaranteed for every plan. To avoid a charge, cancel at least 24 hours
+  before a free trial ends through your App Store subscription settings.
 
 ### 4.2 Auto-Renewal
 
 If you purchase an auto-renewing subscription:
 
-- Payment is charged to your Apple ID at confirmation of purchase.
+- Payment is charged to your Apple Account at confirmation of purchase,
+  or after an applicable free trial as shown in Apple's purchase sheet.
 - Your subscription automatically renews unless auto-renew is turned
   off **at least 24 hours before the end of the current period**.
 - Your account will be charged for renewal **within 24 hours prior to
@@ -62,14 +70,26 @@ If you purchase an auto-renewing subscription:
 - You can manage your subscription, change billing preferences, or
   turn off auto-renew by going to your account settings on the App
   Store after purchase.
+- Changes between subscription plans follow the effective date and
+  charges shown by Apple. Cancellation stops future renewals; paid
+  access normally continues until the current entitlement expires.
+- Buying Lifetime does not automatically cancel a separate active
+  subscription. Manage or cancel that subscription in the App Store
+  if you no longer want it to renew.
 
 ### 4.3 One-Time Purchases (Lifetime)
 
-A one-time purchase grants you access to the Paid Features for the
-current major version of the App and any minor updates released within
-that major version, unless we explicitly state a longer scope at the
-time of purchase. We may introduce future major versions or new add-on
-products that are not included in a previous one-time purchase.
+The Expose Premium Lifetime product is a non-consumable one-time
+purchase that unlocks the Expose Pro entitlement without a recurring
+subscription fee. Existing Lifetime purchases remain recognized when
+you update Expose, including the transition from 0.x to 1.0; the App
+version number alone does not expire that entitlement.
+
+This purchase does not guarantee perpetual availability of the App,
+Apple services, or every future separately sold product. Separately
+identified products or add-ons are included only if stated at purchase.
+Nothing in this revision removes rights granted at the time of an
+existing purchase or under applicable consumer law.
 
 ### 4.4 Refunds
 
@@ -80,17 +100,21 @@ App Store transactions.
 
 ### 4.5 Restoring Purchases
 
-If you reinstall the App, switch devices, or sign into a new Apple ID
-that has previously purchased Paid Features, you can restore your
-purchases from within the App. We do not store any record of your
-purchase outside Apple's purchase history for your Apple ID.
+If you reinstall the App or switch devices, use Restore Purchases
+while signed into the Apple Account used for the original purchase.
+Restoration requires a valid purchase or active entitlement and can
+depend on Apple and RevenueCat being available. No Expose account is
+required. Apple maintains transaction history; RevenueCat also processes
+purchase receipts, an anonymous app identifier, and entitlement records
+to verify and restore Pro access, as described in our Privacy Policy.
+We do not receive your payment-card details from the App Store.
 
 ### 4.6 Price Changes
 
-If we change the price of an auto-renewing subscription, you will be
-notified in accordance with App Store policy and your local law. You
-will have the opportunity to accept or reject the new price; rejecting
-will end the subscription at the end of the current paid period.
+Subscription price changes follow Apple's notification and consent
+rules and applicable law. Apple may require your consent depending on
+the change and your region. You can review the renewal price and cancel
+future renewal in your App Store subscription settings.
 
 ## 5. Acceptable Use
 
@@ -127,8 +151,10 @@ folders that contain sensitive material).
   customer-premises equipment, or local network policy.
 - **iCloud and File Provider.** Files exposed from iCloud Drive or
   third-party File Providers depend on the corresponding service
-  remaining functional and on the file being available locally. We
-  do not control these services.
+  remaining functional and on the file being available locally. Optional
+  route sync also depends on your iCloud account. Disabling sync does
+  not itself erase previously synchronized copies. We do not control
+  these services.
 
 ## 7. Backups and Data Loss
 
@@ -184,8 +210,12 @@ your violation of these Terms or any law or third-party right.
 
 ## 11. Termination
 
-You may stop using the App and delete it at any time, which will
-remove all on-device data created by the App.
+You may stop using the App and delete it at any time. Uninstalling
+removes App-managed local configuration, caches, and logs, but may not
+remove Keychain entries, iCloud copies, backups, exported files, or
+third-party purchase and diagnostic records. Uninstalling does not
+cancel an App Store subscription; manage renewal in the App Store.
+See the Privacy Policy for storage and deletion details.
 
 We may suspend or terminate your access to the App if you materially
 breach these Terms or use the App in a way that exposes us or our

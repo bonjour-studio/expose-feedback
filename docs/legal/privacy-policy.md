@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** November 7, 2026
+**Last updated:** November 13, 2026
 **App:** Expose — Local HTTP/API Server
 **Developer:** Bonjour, LLC
 **Contact:** support@bonjour.dev
@@ -13,8 +13,9 @@ the few exceptions you should be aware of.
 
 ## 1. Summary
 
-- The App runs an HTTP server **on your device, on your local network
-  only**. It does not expose your device to the public internet.
+- The App runs an HTTP/HTTPS server **on your device** for local-network
+  use. It does not publish a public endpoint, configure router port
+  forwarding, or provide a public relay or tunnel.
 - Bonjour, LLC does **not** receive or sell the contents of your local routes,
   files, folders, photos, videos, request logs, or access tokens. You control
   local-network sharing; optional iCloud route sync is described below.
@@ -24,8 +25,10 @@ the few exceptions you should be aware of.
   collecting the content you expose through the local server.
 - Server credentials are stored in the device Keychain so saved configurations
   can be reused. They are not sent to Bonjour, LLC or included in route sync.
-- The App accesses photos, files, and folders **only** when you explicitly
-  pick them, and only within the scope you grant.
+- PhotoKit can browse the photos and videos authorized by your limited or
+  full Photo Library permission so you can select sources. Only the assets
+  you add to a source are served. Files and folders use the system document
+  picker and the access scope you grant.
 - You can manage permissions in iOS Settings and delete local routes, sources,
   caches, and logs in the App. Uninstalling does not necessarily remove
   Keychain entries, iCloud copies, or records held by third-party services.
@@ -66,7 +69,11 @@ logs. Bonjour, LLC does not operate the iCloud storage service.
 - **Server credentials:** bearer tokens and Basic authentication credentials
   for saved server configurations and profiles are persisted in the device
   Keychain. Configuration JSON contains a credential reference, not the
-  secret values. These credentials are not included in iCloud route sync.
+  secret values. Saved HTTPS certificate/private-key material is also
+  handled through the device Keychain. The App does not enable iCloud
+  Keychain synchronization for these items, and they are not included in
+  route sync. Secrets you manually put inside a response body or header
+  remain part of that route and may be shared or synced with it.
 - **Request logs:** each session keeps a rolling log of incoming HTTP
   requests (method, path, status code, duration, bytes, remote address,
   matched route). Tokens are removed from the log before storage.
@@ -101,7 +108,7 @@ are using:
 | Permission | When asked | Why |
 |---|---|---|
 | Local Network | First time you start the server | Lets the App serve the local routes you enable to devices on the same network. |
-| Photo Library | When you choose photos or serve selected photo assets | To let you select specific photos and videos to expose. Photo Source creation opens PHPicker directly; PhotoKit is used only to resolve assets you selected. We do not request full library access. |
+| Photo Library | When you open the photo/video source picker | The App requests PhotoKit library authorization to browse and select assets. You can grant limited access to selected assets or full access in the system permission flow. The App serves only the assets you explicitly add to a source. |
 | Files | First time you add a File or Folder Source | iOS shows the standard document picker. The App receives a security-scoped bookmark for the items you pick and nothing else. |
 
 You may revoke any of these permissions in iOS Settings at any time. The
@@ -110,17 +117,24 @@ revoked permission.
 
 ## 6. Network Behavior
 
-- The local server listens on a TCP port you configure (default: 8080) and
-  binds to the local network only. It does not open ports on your router and
-  does not use a Bonjour-operated relay to serve your content.
+- The local server listens on a TCP port you configure (default: 8080).
+  Reachability depends on your network interfaces, firewall, and routing.
+  The App does not open ports on your router or use a Bonjour-operated
+  relay to serve your content.
 - Separately from the local server, the App may make outbound requests needed
   for App Store purchases, RevenueCat entitlement processing, Firebase
   Analytics, Firebase Crashlytics, App Store review prompts, or links you tap
   in Settings.
 - The App can advertise its running server using Bonjour/mDNS on the local
-  network. Optional WebDAV and upload/write features operate on sources you
-  enable. Expose does not provide a public relay, tunnel, or remote HTTPS
-  termination service.
+  network, revealing its service name, host, and port to that network.
+  Optional HTTPS terminates on your device, using a locally managed or
+  imported certificate. Optional WebDAV and upload/write features operate
+  on sources you enable. Expose does not provide remote HTTPS termination.
+- Optional iCloud route sync and downloads from iCloud Photos, iCloud Drive,
+  or other File Providers may contact the corresponding provider when you
+  enable or use those features.
+- iOS can suspend the server after backgrounding or screen lock. Network
+  reachability is not guaranteed while the App is in the background.
 - When you contact support, your email is sent through Apple's Mail app
   using your own email account.
 - When you tap "Rate on App Store", iOS opens the App Store via Apple
@@ -160,8 +174,10 @@ please contact us at support@bonjour.dev and we will delete it.
 - File sources default to read-only access. Upload and writable WebDAV
   operations require explicit configuration; when enabled, authorized local
   clients can modify the selected source within the granted scope.
-- DNS rebinding protections (Host validation, Origin checks, default-deny
-  CORS) are enabled by default.
+- Host validation, CORS/Origin rules, client IP restrictions, and optional
+  authentication help control access according to your configuration.
+  Plain HTTP does not encrypt traffic; use HTTPS and a trusted network
+  when the sensitivity of your content requires it.
 - We do not control the security of the local Wi-Fi network you connect
   to. You should not run the App on untrusted networks unless you
   understand the implications.

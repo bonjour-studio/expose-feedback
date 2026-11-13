@@ -42,105 +42,253 @@
       <section class="legal-hero">
         <p class="eyebrow">Legal</p>
         <h1>Privacy Policy</h1>
-        <div class="legal-meta"><div class="legal-meta-list">
-<div><span class="legal-meta-key">Last updated</span><span class="legal-meta-value">November 7, 2026</span></div>
+        <div class="legal-meta"><div class="legal-meta-list"><div><span class="legal-meta-key">Last updated</span><span class="legal-meta-value">November 13, 2026</span></div>
 <div><span class="legal-meta-key">App</span><span class="legal-meta-value">Expose — Local HTTP/API Server</span></div>
 <div><span class="legal-meta-key">Developer</span><span class="legal-meta-value">Bonjour, LLC</span></div>
-<div><span class="legal-meta-key">Contact</span><span class="legal-meta-value">support@bonjour.dev</span></div>
-</div></div>
-        <div class="legal-intro"><p>This Privacy Policy describes how Expose (&quot;the App&quot;, &quot;we&quot;, &quot;us&quot;) handles your information when you use the App on iOS or iPadOS. We have designed the App to operate <strong>locally on your device</strong> and to keep your data on your device. This document explains, in plain terms, what that means and the few exceptions you should be aware of.</p></div>
+<div><span class="legal-meta-key">Contact</span><span class="legal-meta-value">support@bonjour.dev</span></div></div></div>
+        <div class="legal-intro"><p>This Privacy Policy describes how Expose (&quot;the App&quot;, &quot;we&quot;, &quot;us&quot;) handles
+your information when you use the App on iOS or iPadOS. We have designed
+the App to operate <strong>locally on your device</strong> and to keep your data on
+your device. This document explains, in plain terms, what that means and
+the few exceptions you should be aware of.</p></div>
       </section>
       <article class="legal-body">
 <h2>1. Summary</h2>
 <ul>
-<li>The App runs an HTTP server <strong>on your device, on your local network only</strong>. It does not expose your device to the public internet.</li>
-<li>Bonjour, LLC does <strong>not</strong> receive or sell the contents of your local routes, files, folders, photos, videos, request logs, or access tokens. You control local-network sharing; optional iCloud route sync is described below.</li>
-<li>The production App includes limited analytics, crash diagnostics, and purchase infrastructure through Firebase, RevenueCat, and Apple platform services. Those systems are used for app operations and commerce, not for collecting the content you expose through the local server.</li>
-<li>Server credentials are stored in the device Keychain so saved configurations can be reused. They are not sent to Bonjour, LLC or included in route sync.</li>
-<li>The App accesses photos, files, and folders <strong>only</strong> when you explicitly pick them, and only within the scope you grant.</li>
-<li>You can manage permissions in iOS Settings and delete local routes, sources, caches, and logs in the App. Uninstalling does not necessarily remove Keychain entries, iCloud copies, or records held by third-party services.</li>
+<li>The App runs an HTTP/HTTPS server <strong>on your device</strong> for local-network
+use. It does not publish a public endpoint, configure router port
+forwarding, or provide a public relay or tunnel.</li>
+<li>Bonjour, LLC does <strong>not</strong> receive or sell the contents of your local routes,
+files, folders, photos, videos, request logs, or access tokens. You control
+local-network sharing; optional iCloud route sync is described below.</li>
+<li>The production App includes limited analytics, crash diagnostics, and
+purchase infrastructure through Firebase, RevenueCat, and Apple platform
+services. Those systems are used for app operations and commerce, not for
+collecting the content you expose through the local server.</li>
+<li>Server credentials are stored in the device Keychain so saved configurations
+can be reused. They are not sent to Bonjour, LLC or included in route sync.</li>
+<li>PhotoKit can browse the photos and videos authorized by your limited or
+full Photo Library permission so you can select sources. Only the assets
+you add to a source are served. Files and folders use the system document
+picker and the access scope you grant.</li>
+<li>You can manage permissions in iOS Settings and delete local routes, sources,
+caches, and logs in the App. Uninstalling does not necessarily remove
+Keychain entries, iCloud copies, or records held by third-party services.</li>
 </ul>
 <h2>2. Information We Do Not Receive From Local-Server Features</h2>
-<p>Through Expose's local-server features, Bonjour, LLC does not receive any of the following:</p>
+<p>Through Expose's local-server features, Bonjour, LLC does not receive any of
+the following:</p>
 <ul>
-<li>Your name, email address, phone number, or other contact details (we do not require an account).</li>
-<li>The contents of files, folders, photos, videos, or HTTP responses you expose through the App.</li>
-<li>Local-client IP addresses captured in request logs. Those logs can remain on-device for the session workflow, but they are never transmitted to us.</li>
-<li>Device identifiers or advertising identifiers from clients on the local network.</li>
-<li>The contents of route bodies, files, folders, photos, videos, local HTTP request logs, access tokens, local route URLs, and local-client IP addresses are not sent to Firebase Analytics, Crashlytics, or RevenueCat.</li>
-<li>Device GPS location. The App does not request Location Services permission. Original photo/video downloads can preserve embedded metadata, including location, and share it with the local clients you authorize. Analytics may derive coarse location from IP addresses as described in Section 10.</li>
+<li>Your name, email address, phone number, or other contact details (we do
+not require an account).</li>
+<li>The contents of files, folders, photos, videos, or HTTP responses you
+expose through the App.</li>
+<li>Local-client IP addresses captured in request logs. Those logs can remain
+on-device for the session workflow, but they are never transmitted to us.</li>
+<li>Device identifiers or advertising identifiers from clients on the local
+network.</li>
+<li>The contents of route bodies, files, folders, photos, videos, local HTTP
+request logs, access tokens, local route URLs, and local-client IP
+addresses are not sent to Firebase Analytics, Crashlytics, or RevenueCat.</li>
+<li>Device GPS location. The App does not request Location Services permission.
+Original photo/video downloads can preserve embedded metadata, including
+location, and share it with the local clients you authorize. Analytics may
+derive coarse location from IP addresses as described in Section 10.</li>
 </ul>
 <h2>3. Information Stored on Your Device</h2>
-<p>The following information is stored on your device. You can share it through local-server responses or exports. If you enable optional iCloud route sync, route definitions, including configured response bodies and headers, are stored in your iCloud account and synchronized between your devices. Do not put secrets in route definitions you choose to sync. The route-sync snapshot does not include server credentials, source file/photo contents, or request logs. Bonjour, LLC does not operate the iCloud storage service.</p>
+<p>The following information is stored on your device. You can share it through
+local-server responses or exports. If you enable optional iCloud route sync,
+route definitions, including configured response bodies and headers, are
+stored in your iCloud account and synchronized between your devices. Do not
+put secrets in route definitions you choose to sync. The route-sync snapshot
+does not include server credentials, source file/photo contents, or request
+logs. Bonjour, LLC does not operate the iCloud storage service.</p>
 <ul>
-<li><strong>Server configuration:</strong> routes, route paths, header rules, and source references you create in the App.</li>
-<li><strong>Server credentials:</strong> bearer tokens and Basic authentication credentials for saved server configurations and profiles are persisted in the device Keychain. Configuration JSON contains a credential reference, not the secret values. These credentials are not included in iCloud route sync.</li>
-<li><strong>Request logs:</strong> each session keeps a rolling log of incoming HTTP requests (method, path, status code, duration, bytes, remote address, matched route). Tokens are removed from the log before storage.</li>
-<li><strong>Cached files:</strong> thumbnails for the Photo Picker, temporary downloads pulled from File Provider / iCloud, and large response temp files used to keep memory low. You can clear all caches from Settings → Cache.</li>
+<li><strong>Server configuration:</strong> routes, route paths, header rules, and source
+references you create in the App.</li>
+<li><strong>Server credentials:</strong> bearer tokens and Basic authentication credentials
+for saved server configurations and profiles are persisted in the device
+Keychain. Configuration JSON contains a credential reference, not the
+secret values. Saved HTTPS certificate/private-key material is also
+handled through the device Keychain. The App does not enable iCloud
+Keychain synchronization for these items, and they are not included in
+route sync. Secrets you manually put inside a response body or header
+remain part of that route and may be shared or synced with it.</li>
+<li><strong>Request logs:</strong> each session keeps a rolling log of incoming HTTP
+requests (method, path, status code, duration, bytes, remote address,
+matched route). Tokens are removed from the log before storage.</li>
+<li><strong>Cached files:</strong> thumbnails for the Photo Picker, temporary downloads
+pulled from File Provider / iCloud, and large response temp files used
+to keep memory low. You can clear all caches from Settings → Cache.</li>
 <li><strong>Preferences:</strong> appearance, language, default port.</li>
 </ul>
 <h2>4. Information You Knowingly Share</h2>
 <ul>
-<li><strong>HTTP responses on your local network.</strong> The whole point of the App is to serve content to other devices on the same Wi-Fi. When you start the server and share a URL or QR code, anyone with the URL <strong>and</strong> the current access token (when token protection is enabled) can read the content of the routes you have configured. We have no visibility into these requests.</li>
-<li><strong>Email and feedback.</strong> When you use &quot;Contact Developer&quot; to write to support@bonjour.dev, your email address, message contents, and the diagnostic details prefilled into the email body (app version, build commit, bundle identifier, device model, system version, and locale) are visible to us so that we can reply. You can edit or remove these details before sending. We use this information solely to respond to your message and do not share it with third parties.</li>
-<li><strong>App Store review.</strong> When you tap &quot;Rate on App Store&quot;, your review is governed by Apple's privacy practices, not ours.</li>
+<li><strong>HTTP responses on your local network.</strong> The whole point of the App
+is to serve content to other devices on the same Wi-Fi. When you start
+the server and share a URL or QR code, anyone with the URL <strong>and</strong> the
+current access token (when token protection is enabled) can read the
+content of the routes you have configured. We have no visibility into
+these requests.</li>
+<li><strong>Email and feedback.</strong> When you use &quot;Contact Developer&quot; to write to
+support@bonjour.dev, your email address, message contents, and the
+diagnostic details prefilled into the email body (app version, build
+commit, bundle identifier, device model, system version, and locale)
+are visible to us so that we can reply. You can edit or remove these
+details before sending. We use this information solely to respond to
+your message and do not share it with third parties.</li>
+<li><strong>App Store review.</strong> When you tap &quot;Rate on App Store&quot;, your review is
+governed by Apple's privacy practices, not ours.</li>
 </ul>
 <h2>5. Permissions the App Requests</h2>
-<p>The App requests the minimum iOS permissions needed for the feature you are using:</p>
+<p>The App requests the minimum iOS permissions needed for the feature you
+are using:</p>
 <table>
-<thead><tr><th>Permission</th><th>When asked</th><th>Why</th></tr></thead>
+<thead>
+<tr>
+<th>Permission</th>
+<th>When asked</th>
+<th>Why</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Local Network</td><td>First time you start the server</td><td>Lets the App serve the local routes you enable to devices on the same network.</td></tr>
-<tr><td>Photo Library</td><td>When you choose photos or serve selected photo assets</td><td>To let you select specific photos and videos to expose. Photo Source creation opens PHPicker directly; PhotoKit is used only to resolve assets you selected. We do not request full library access.</td></tr>
-<tr><td>Files</td><td>First time you add a File or Folder Source</td><td>iOS shows the standard document picker. The App receives a security-scoped bookmark for the items you pick and nothing else.</td></tr>
+<tr>
+<td>Local Network</td>
+<td>First time you start the server</td>
+<td>Lets the App serve the local routes you enable to devices on the same network.</td>
+</tr>
+<tr>
+<td>Photo Library</td>
+<td>When you open the photo/video source picker</td>
+<td>The App requests PhotoKit library authorization to browse and select assets. You can grant limited access to selected assets or full access in the system permission flow. The App serves only the assets you explicitly add to a source.</td>
+</tr>
+<tr>
+<td>Files</td>
+<td>First time you add a File or Folder Source</td>
+<td>iOS shows the standard document picker. The App receives a security-scoped bookmark for the items you pick and nothing else.</td>
+</tr>
 </tbody>
 </table>
-<p>You may revoke any of these permissions in iOS Settings at any time. The App will continue to work for the features that do not depend on the revoked permission.</p>
+<p>You may revoke any of these permissions in iOS Settings at any time. The
+App will continue to work for the features that do not depend on the
+revoked permission.</p>
 <h2>6. Network Behavior</h2>
 <ul>
-<li>The local server listens on a TCP port you configure (default: 8080) and binds to the local network only. It does not open ports on your router and does not use a Bonjour-operated relay to serve your content.</li>
-<li>Separately from the local server, the App may make outbound requests needed for App Store purchases, RevenueCat entitlement processing, Firebase Analytics, Firebase Crashlytics, App Store review prompts, or links you tap in Settings.</li>
-<li>The App can advertise its running server using Bonjour/mDNS on the local network. Optional WebDAV and upload/write features operate on sources you enable. Expose does not provide a public relay, tunnel, or remote HTTPS termination service.</li>
-<li>When you contact support, your email is sent through Apple's Mail app using your own email account.</li>
-<li>When you tap &quot;Rate on App Store&quot;, iOS opens the App Store via Apple APIs.</li>
+<li>The local server listens on a TCP port you configure (default: 8080).
+Reachability depends on your network interfaces, firewall, and routing.
+The App does not open ports on your router or use a Bonjour-operated
+relay to serve your content.</li>
+<li>Separately from the local server, the App may make outbound requests needed
+for App Store purchases, RevenueCat entitlement processing, Firebase
+Analytics, Firebase Crashlytics, App Store review prompts, or links you tap
+in Settings.</li>
+<li>The App can advertise its running server using Bonjour/mDNS on the local
+network, revealing its service name, host, and port to that network.
+Optional HTTPS terminates on your device, using a locally managed or
+imported certificate. Optional WebDAV and upload/write features operate
+on sources you enable. Expose does not provide remote HTTPS termination.</li>
+<li>Optional iCloud route sync and downloads from iCloud Photos, iCloud Drive,
+or other File Providers may contact the corresponding provider when you
+enable or use those features.</li>
+<li>iOS can suspend the server after backgrounding or screen lock. Network
+reachability is not guaranteed while the App is in the background.</li>
+<li>When you contact support, your email is sent through Apple's Mail app
+using your own email account.</li>
+<li>When you tap &quot;Rate on App Store&quot;, iOS opens the App Store via Apple
+APIs.</li>
 </ul>
 <h2>7. Children</h2>
-<p>Expose is a developer tool not directed at children under 13. We do not knowingly collect personal information from anyone under 13. If you believe a child has provided personal information to us through the App, please contact us at support@bonjour.dev and we will delete it.</p>
+<p>Expose is a developer tool not directed at children under 13. We do not
+knowingly collect personal information from anyone under 13. If you
+believe a child has provided personal information to us through the App,
+please contact us at support@bonjour.dev and we will delete it.</p>
 <h2>8. Data Retention and Deletion</h2>
 <ul>
-<li>All on-device data persists until you remove it. You can:</li>
+<li>All on-device data persists until you remove it. You can:
+<ul>
 <li>Clear caches in Settings → Cache.</li>
 <li>Delete request logs (per-session or all sessions) from the Logs page.</li>
-<li>Delete sources, routes, and saved configuration from their respective pages.</li>
-<li>Uninstall the App, which removes App-managed on-device configuration, caches, and logs.</li>
-<li>Deleting local data does not necessarily delete previously exported copies, system backups, or iCloud copies. Disabling iCloud route sync stops that feature; it does not itself erase data already saved to iCloud. Keychain entries may remain after uninstalling, so uninstalling alone is not a guaranteed way to remove stored credentials.</li>
-<li>Uninstalling the App does not delete App Store transaction records managed by Apple, entitlement or purchase records processed by RevenueCat, or analytics/crash records that were already transmitted before uninstall.</li>
+<li>Delete sources, routes, and saved configuration from their respective
+pages.</li>
+<li>Uninstall the App, which removes App-managed on-device configuration,
+caches, and logs.</li>
+</ul>
+</li>
+<li>Deleting local data does not necessarily delete previously exported copies,
+system backups, or iCloud copies. Disabling iCloud route sync stops that
+feature; it does not itself erase data already saved to iCloud. Keychain
+entries may remain after uninstalling, so uninstalling alone is not a
+guaranteed way to remove stored credentials.</li>
+<li>Uninstalling the App does not delete App Store transaction records managed
+by Apple, entitlement or purchase records processed by RevenueCat, or
+analytics/crash records that were already transmitted before uninstall.</li>
 </ul>
 <h2>9. Security</h2>
 <ul>
-<li>Random access tokens are generated locally with a cryptographically secure random source.</li>
-<li>Tokens are stripped from URL query strings before requests are written to the log file.</li>
-<li>File sources default to read-only access. Upload and writable WebDAV operations require explicit configuration; when enabled, authorized local clients can modify the selected source within the granted scope.</li>
-<li>DNS rebinding protections (Host validation, Origin checks, default-deny CORS) are enabled by default.</li>
-<li>We do not control the security of the local Wi-Fi network you connect to. You should not run the App on untrusted networks unless you understand the implications.</li>
+<li>Random access tokens are generated locally with a cryptographically
+secure random source.</li>
+<li>Tokens are stripped from URL query strings before requests are written
+to the log file.</li>
+<li>File sources default to read-only access. Upload and writable WebDAV
+operations require explicit configuration; when enabled, authorized local
+clients can modify the selected source within the granted scope.</li>
+<li>Host validation, CORS/Origin rules, client IP restrictions, and optional
+authentication help control access according to your configuration.
+Plain HTTP does not encrypt traffic; use HTTPS and a trusted network
+when the sensitivity of your content requires it.</li>
+<li>We do not control the security of the local Wi-Fi network you connect
+to. You should not run the App on untrusted networks unless you
+understand the implications.</li>
 </ul>
 <h2>10. Third-Party Services</h2>
 <p>The production App currently uses the following external services:</p>
 <ul>
-<li><strong>Apple App Store / StoreKit:</strong> processes purchases, subscriptions, refunds, review prompts, and App Store account-level commerce flows.</li>
-<li><strong>RevenueCat:</strong> processes purchase history, receipts, and entitlement state using an SDK-generated anonymous app identifier. This enables paid access, purchase restoration, subscription updates, and purchase analytics. Expose does not supply a named Expose account or contact information to RevenueCat.</li>
-<li><strong>Firebase Analytics:</strong> collects app-instance/device identifiers, app interactions such as launches and screen views, purchase-related events, and coarse location inferred from IP addresses for product analytics. The App also sends one-time app transaction metadata such as the original app version and purchase date. These events can be associated with the SDK identifiers. The App does not send route contents, file names, photo identifiers, local request URLs, or access tokens as analytics parameters.</li>
-<li><strong>Firebase Crashlytics:</strong> collects crash reports, non-fatal errors, device/OS information, and diagnostic context to improve stability. Firebase components also collect SDK operational diagnostics. Expose does not set a named user ID in Crashlytics or send local-server content or credentials as diagnostic context.</li>
+<li><strong>Apple App Store / StoreKit:</strong> processes purchases, subscriptions,
+refunds, review prompts, and App Store account-level commerce flows.</li>
+<li><strong>RevenueCat:</strong> processes purchase history, receipts, and entitlement state
+using an SDK-generated anonymous app identifier. This enables paid access,
+purchase restoration, subscription updates, and purchase analytics. Expose
+does not supply a named Expose account or contact information to RevenueCat.</li>
+<li><strong>Firebase Analytics:</strong> collects app-instance/device identifiers, app
+interactions such as launches and screen views, purchase-related events,
+and coarse location inferred from IP addresses for product analytics. The
+App also sends one-time app transaction metadata such as the original app
+version and purchase date. These events can be associated with the SDK
+identifiers. The App does not send route contents, file names, photo
+identifiers, local request URLs, or access tokens as analytics parameters.</li>
+<li><strong>Firebase Crashlytics:</strong> collects crash reports, non-fatal errors, device/OS
+information, and diagnostic context to improve stability. Firebase
+components also collect SDK operational diagnostics. Expose does not set a
+named user ID in Crashlytics or send local-server content or credentials
+as diagnostic context.</li>
 </ul>
-<p>These services have their own privacy practices and security controls. Expose does not use this data for cross-app targeted advertising, does not enable Google Signals or Google Ads sharing, and does not share this data with advertising platforms or data brokers. We expect any service handling App data to provide protections consistent with this policy and the limited purposes described above.</p>
+<p>These services have their own privacy practices and security controls.
+Expose does not use this data for cross-app targeted advertising, does not
+enable Google Signals or Google Ads sharing, and does not share this data
+with advertising platforms or data brokers. We expect any service handling
+App data to provide protections consistent with this policy and the limited
+purposes described above.</p>
 <h2>11. International Users</h2>
-<p>Local-server content and request logs are stored on your device, subject to the sharing and optional iCloud route-sync features described above. Data handled by Apple, RevenueCat, or Firebase may be processed in the regions where those providers operate their services.</p>
+<p>Local-server content and request logs are stored on your device, subject to
+the sharing and optional iCloud route-sync features described above. Data
+handled by Apple, RevenueCat, or Firebase may be processed in the regions
+where those providers operate their services.</p>
 <h2>12. Your Rights</h2>
-<p>We do not maintain an Expose user account or remotely store the contents you serve through the local server. For support email you send us directly, you may request deletion or correction by replying to our support address. For purchase, analytics, or crash information handled by Apple, RevenueCat, or Firebase, requests are handled through the controls and processes those providers make available, subject to applicable law.</p>
+<p>We do not maintain an Expose user account or remotely store the contents you
+serve through the local server. For support email you send us directly, you
+may request deletion or correction by replying to our support address. For
+purchase, analytics, or crash information handled by Apple, RevenueCat, or
+Firebase, requests are handled through the controls and processes those
+providers make available, subject to applicable law.</p>
 <h2>13. Changes to This Policy</h2>
-<p>We may update this Privacy Policy when laws change, when the App's behavior changes, or when we add or remove features. The &quot;Last updated&quot; date at the top of this document indicates the latest revision. If a change introduces materially different data collection, we will surface the change in-app before the new behavior takes effect.</p>
+<p>We may update this Privacy Policy when laws change, when the App's
+behavior changes, or when we add or remove features. The &quot;Last updated&quot;
+date at the top of this document indicates the latest revision. If a
+change introduces materially different data collection, we will surface
+the change in-app before the new behavior takes effect.</p>
 <h2>14. Contact</h2>
-<p>Questions, requests, or complaints about this Privacy Policy can be sent to:</p>
+<p>Questions, requests, or complaints about this Privacy Policy can be sent
+to:</p>
 <ul>
 <li><strong>Email:</strong> support@bonjour.dev</li>
 <li><strong>Subject line:</strong> Privacy</li>
